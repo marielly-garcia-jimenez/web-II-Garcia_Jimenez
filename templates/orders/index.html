@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/orders.css' %}">
+</head>
+
+<body>
+    <h1> {{titulo}}</h1>
+    <p>Total de ordenes {{total_orders}}</p>
+    <p>Total de pagos {{total_payments}}</p>
+
+    <div class="container">
+        {% for item in orders %}
+        <div>ID: {{item.id}} TOTAL: {{item.Total}}</div>
+        {% endfor %}
+    </div>
+    
+
+    <div class="container">
+        {% for q in questions %}
+    <div>
+        {{q.id}} --- {{q.question_text}}
+    </div>
+
+
+    
+</body>
+
+</html>

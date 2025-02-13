@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de clientes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+        }
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+        .card .info {
+            padding: 10px;
+        }
+        .card h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .card p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de clientes</h1>
+    <div class="container">
+        {% for user in users %}
+            <div class="card">
+                <img src="{{ user.photo }}" alt="{{ user.name }}">
+                <div class="info">
+                    <h3>{{ user.name }}</h3>
+                    <p><strong>ID:</strong> {{ user.id }} &nbsp; <strong>Age:</strong> {{ user.age }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
