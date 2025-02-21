@@ -10,7 +10,7 @@ body {
 }
 
 header, footer {
-    background-color: #b3e5fc; /* Azul pastel */
+    background-color: #b3e5fc; 
     padding: 20px;
     text-align: center;
 }
@@ -55,7 +55,7 @@ main p {
 }
 
 .action-buttons a {
-    background-color: #ffe0b2; /* Naranja pastel */
+    background-color: #ffe0b2; 
     color: #333;
     padding: 15px 30px;
     margin: 0 10px;
@@ -73,5 +73,5 @@ footer {
     background-color: #b3e5fc;
     padding: 20px;
     text-align: center;
-    margin-top: auto; /* Asegura que el footer esté al final */
+    margin-top: auto; 
 }
