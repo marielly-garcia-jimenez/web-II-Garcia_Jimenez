@@ -23,11 +23,13 @@
 
     <div class="container">
         {% for q in questions %}
-    <div>
-        {{q.id}} --- {{q.question_text}}
+            <div>
+                {{ q.id }} --- {{ q.question_text }}
+            </div>
+        {% endfor %} 
     </div>
-
-
+    
+    <script src="{% static 'js/orders.js' %}"></script>
     
 </body>
 

@@ -24,6 +24,15 @@ class UserAddress(models.Model):
     def __str__(self):
         return f"{self.user.name} - {self.street}, {self.city}"
 
+class Direccion(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    calle = models.CharField(max_length=100)
+    numero = models.CharField(max_length=20)
+    colonia = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.calle}, {self.numero}, {self.colonia}"
+
 
    
     

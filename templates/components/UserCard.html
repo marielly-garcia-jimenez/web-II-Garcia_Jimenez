@@ -1,0 +1,15 @@
+
+
+<div class="user_card_container">
+    
+    <div class="user-actions">
+        <a href="{% url 'userDetail' id %}">Ver</a>
+    </div>
+    <div class="card">
+        <img src="{{ photo }}" alt="{{ name }}">
+        <div class="info">
+            <h3>{{ name }}</h3>
+            <p><strong>ID:</strong> {{ id }} &nbsp; <strong>Age:</strong> {{ age }}</p>
+        </div>
+    </div>
+</div>

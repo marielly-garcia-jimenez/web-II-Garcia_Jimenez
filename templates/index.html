@@ -1,0 +1,24 @@
+{% load static %}  <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Bienvenidos</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'indexOrders' %}">Orders</a></li>
+                <li><a href="{% url 'users_index' %}">Users</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <p>Esta es la página principal.</p>
+    </main>
+</body>
+</html>

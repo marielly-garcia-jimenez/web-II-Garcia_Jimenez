@@ -1,6 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
+    background-color: rgb(238, 152, 192);
 }
 h1 {
     font-size: 24px;
@@ -8,10 +9,11 @@ h1 {
 }
 .container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(4, 1fr); 
     gap: 20px;
     padding: 20px;
     justify-content: center;
+    
 }
 .card {
     border: 1px solid #ccc;
@@ -19,6 +21,14 @@ h1 {
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+.user-card {
+   width: 200px;
+   text-align: center;
+   background-color: #f0f0f0;
+   padding: 15px; 
+   border-radius: 10px;
+}
+
 .card img {
     width: 100%;
     height: auto;
