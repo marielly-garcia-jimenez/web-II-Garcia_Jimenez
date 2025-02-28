@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carnaval de Barranquilla</title>
+{% extends 'base/base.html' %}
+
+{% block styles %}
+
     <style>
         /* Estilos generales */
         body {
@@ -115,18 +113,11 @@
             }
         }
     </style>
-</head>
-<body>
 
-    
-            <a href="#">Principal</a>
-            <a href="#">Eventos</a>
-            <a href="#">Boletos</a>
-            <a href="#">Productos</a>
-        
-        
+{% endblock %}
 
-    <section class="principal">
+{% block content %}
+<section class="principal">
         <div class="imagenes-principales">
             <div class="imagen">
                 <img src="https://img.freepik.com/vector-gratis/plantilla-volante-plano-carnaval-brasileno_23-2148798255.jpg" alt="PREGO BAIXO">
@@ -149,7 +140,7 @@
         </div>
     </section>
 
-    <section class="noticias">
+<section class="noticias">
         <h2>NOTICIAS</h2>
         <div class="contenedor-articulos">
             <article>
@@ -168,7 +159,7 @@
         </div>
     </section>
 
-    <section class="fantasias">
+<section class="fantasias">
         <h2>FANTASIAS DEL CARNAVAL</h2>
         <div class="contenedor-articulos">
             <article>
@@ -182,6 +173,9 @@
             </article>
         </div>
     </section>
+{% endblock %}
 
-</body>
-</html>
+{% block script %}
+{% endblock %}
+
+

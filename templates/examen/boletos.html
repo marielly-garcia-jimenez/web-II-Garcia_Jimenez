@@ -1,7 +1,8 @@
-{% load static %} <!DOCTYPE html>
-<html>
-<head>
-    <title>Boletos</title>
+{% extends 'base/base.html' %} 
+
+{% block styles %}
+
+
     <style>
         .boletos-container {
             display: grid;
@@ -31,19 +32,21 @@
             cursor: pointer;
         }
     </style>
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
+
     <h1>Boletos</h1>
     <div class="boletos-container">
         {% for boleto in boletos %}
             <div class="boleto">
+                {% load static %}
                 <img src="{% static 'img/boleto.jpg' %}" alt="Boleto"> 
-                <h2>{{ boleto.evento.name }}</h2>
-                <p>Localidad: {{ boleto.evento.localidad.name }}</p>
+                <h2>{{ boleto.evento_id.name }}</h2>
+                <p>Localidad: {{ boleto.evento_id.localidad_id.name }}</p>
                 <p>Precio: ${{ boleto.precio }}</p>
                 <button class="comprar-btn">Comprar</button>
             </div>
         {% endfor %}
     </div>
-</body>
-</html>
+{% endblock %}

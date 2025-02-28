@@ -1,0 +1,85 @@
+{% load static %}  <!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Eventos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: rgba(89, 131, 248, 0.301);
+        }
+        main {
+            background-image: url('https://i.pinimg.com/736x/b6/22/31/b62231dd119d33d2d4db2c3f62b33723.jpg');
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+        }
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            text-align: left;
+        }
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+        .card .info {
+            padding: 10px;
+        }
+        .card h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .card p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #4c00ff;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Eventos</h1>
+    <div class="container">
+        {% for evento in eventos %}
+            <div class="card">
+                <img src="{{ evento.photo }}" alt="Imagen de {{ Evento.name }}">
+                <div class="info">
+                    <h3>{{ evento.name }}</h3>
+                    <p><strong>Fecha:</strong> {{ evento.fecha_inicio }}</p>
+                    <p><strong>Descripción:</strong> {{ evento.descripcion }}</p>
+                    <a href="#">Boletos</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+
+
+    

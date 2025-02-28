@@ -1,0 +1,50 @@
+{% extends 'base/base.html' %}
+
+{% block styles %}
+<style>
+    .productos-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+        gap: 20px;
+    }
+
+    .producto {
+        border: 1px solid #ccc;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .producto img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .comprar-btn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<h1>Productos</h1>
+<div class="productos-container">
+    {% for producto in productos %}
+    <div class="producto">
+        {% if producto.imagen %}
+        <img src="{{ producto.imagen.url }}" alt="Imagen de {{ producto.nombre }}">
+        {% endif %}
+        <h2>{{ producto.nombre }}</h2>
+        <p>Descripción: {{ producto.descripcion }}</p>
+        <p>Precio: ${{ producto.precio }}</p>
+        <button class="comprar-btn">Comprar</button>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
