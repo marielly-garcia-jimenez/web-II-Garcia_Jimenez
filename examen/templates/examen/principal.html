@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carnaval de Barranquilla</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #ffcc00, #ff6600);
+            color: #333;
+        }
+
+        /* Barra de navegación */
+        header {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #d20a11;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Sección de imágenes principales */
+        .principal {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .imagenes-principales {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .imagen img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .imagen img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Secciones de noticias y fantasías */
+        .noticias, .fantasias {
+            background: white;
+            padding: 30px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #d20a11;
+        }
+
+        .contenedor-articulos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        article {
+            background: #ffe4b5;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            width: 280px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        article img {
+            width: 100%;
+            max-height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        article h3 {
+            color: #d20a11;
+            margin-top: 10px;
+        }
+
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .imagenes-principales {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .contenedor-articulos {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    
+            <a href="#">Principal</a>
+            <a href="#">Eventos</a>
+            <a href="#">Boletos</a>
+            <a href="#">Productos</a>
+        
+        
+
+    <section class="principal">
+        <div class="imagenes-principales">
+            <div class="imagen">
+                <img src="https://img.freepik.com/vector-gratis/plantilla-volante-plano-carnaval-brasileno_23-2148798255.jpg" alt="PREGO BAIXO">
+            </div>
+            <div class="imagen">
+                <img src="https://img.freepik.com/vector-gratis/ilustracion-gradiente-celebracion-carnaval-barranquilla_23-2151152833.jpg" alt="MARDI GRAS Festival">
+            </div>
+            <div class="imagen">
+                <img src="https://img.freepik.com/psd-gratis/plantilla-portada-youtube-carnaval-brasileno_23-2151273824.jpg" alt="YOUTUBE THUMBNAIL TEMPLATE">
+            </div>
+            <div class="imagen">
+                <img src="https://img.freepik.com/vector-gratis/ilustracion-realista-carnaval-brasileno_52683-55263.jpg" alt="Carnaval brasileño">
+            </div>
+            <div class="imagen">
+                <img src="https://img.freepik.com/vector-gratis/gatito-mascara-plumas-carnaval_23-2148424458.jpg" alt="Gatito con máscara de plumas">
+            </div>
+            <div class="imagen">
+                <img src="https://img.freepik.com/vector-gratis/fondo-carnaval-elementos-realistas_23-2148063625.jpg" alt="Fondo de carnaval">
+            </div>
+        </div>
+    </section>
+
+    <section class="noticias">
+        <h2>NOTICIAS</h2>
+        <div class="contenedor-articulos">
+            <article>
+                <img src="https://img.freepik.com/vector-gratis/ilustracion-realista-carnaval-brasileno_52683-55263.jpg" alt="Carnaval brasileño">
+                <h3>Noticia 1</h3>
+                <p>El carnaval de Barranquilla es una de las festividades más importantes de Colombia...</p>
+            </article>
+            <article>
+                <h3>Noticia 2</h3>
+                <p>Se han anunciado las fechas oficiales del Carnaval de Barranquilla 2025...</p>
+            </article>
+            <article>
+                <h3>Noticia 3</h3>
+                <p>Conoce la historia detrás de los disfraces más icónicos del carnaval...</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="fantasias">
+        <h2>FANTASIAS DEL CARNAVAL</h2>
+        <div class="contenedor-articulos">
+            <article>
+                <img src="https://img.freepik.com/vector-gratis/gatito-mascara-plumas-carnaval_23-2148424458.jpg" alt="Gatito con máscara">
+                <h3>Fantasía de gatito</h3>
+                <p>Una adorable fantasía de gatito con máscara de plumas...</p>
+            </article>
+            <article>
+                <h3>Fantasía 2</h3>
+                <p>Descubre los colores vibrantes de nuestra nueva línea de disfraces...</p>
+            </article>
+        </div>
+    </section>
+
+</body>
+</html>

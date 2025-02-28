@@ -1,0 +1,49 @@
+{% load static %} <!DOCTYPE html>
+<html>
+<head>
+    <title>Boletos</title>
+    <style>
+        .boletos-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .boleto {
+            border: 1px solid #ccc;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .boleto img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .comprar-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Boletos</h1>
+    <div class="boletos-container">
+        {% for boleto in boletos %}
+            <div class="boleto">
+                <img src="{% static 'img/boleto.jpg' %}" alt="Boleto"> 
+                <h2>{{ boleto.evento.name }}</h2>
+                <p>Localidad: {{ boleto.evento.localidad.name }}</p>
+                <p>Precio: ${{ boleto.precio }}</p>
+                <button class="comprar-btn">Comprar</button>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
