@@ -10,5 +10,9 @@ urlpatterns = [
     path('agregar_evento/', views.agregar_evento, name='agregar_evento'),
     path('validar_agregar_evento/', views.validar_agregarEvento, name='validar_agregarevento'),
     path('validar_eliminar_evento/', views.validar_eliminarEvento, name='validar_eliminarevento'),
+    path('validar_agregar_producto/', views.validar_agregar_producto, name='validar_agregar_producto'),
+    path('validar_eliminar_producto/', views.validar_eliminar_producto, name='validar_eliminar_producto'),
+
+  
 ]
 

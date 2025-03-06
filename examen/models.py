@@ -11,6 +11,7 @@ class productos(models.Model):
     name = models.CharField(max_length=200)
     precio = models.DecimalField(max_digits=8, decimal_places=2)
     localidad_id = models.ForeignKey(Localidad, on_delete=models.CASCADE)
+    fecha_creacion = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
         return self.name

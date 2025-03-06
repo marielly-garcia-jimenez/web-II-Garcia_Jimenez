@@ -1,6 +1,6 @@
-const agregar_evento = document.getElementById('agregar')
+const agregar_producto = document.getElementById('agregar')
 const tabla_cuerpo = document.getElementById('tabla')
-agregar_evento.addEventListener('click', function (event){ 
+agregar_producto.addEventListener('click', function (event){ 
     event.preventDefault()
 
     const form = document.getElementById("form");
@@ -32,16 +32,15 @@ agregar_evento.addEventListener('click', function (event){
                 console.log(body.message || "An error occurred");
             } else if (status >= 200 && status < 300) {
                 console.log(status)
-                console.log(body.evento)
+                console.log(body)
                 console.log(body.message)
                 tabla_cuerpo.insertAdjacentHTML("afterbegin", `
-                     <tr id="fila_id_${body.evento.id}">
-                    <th scope="row">${body.evento.nombre}</th>
-                    <td>${body.evento.fecha_inicio}</td>
-                    <td>${body.evento.fecha_fin}</td>
-                    <td>${body.evento.localidad}</td>
+                     <tr id="fila_id_${body.producto.id}">
+                    <th scope="row">${body.producto.nombre}</th>
+                    <td>${body.producto.precio}</td>
+                    <td>${body.producto.localidad}</td>
                     <td>
-                        <button onClick="borrar_evento(${body.evento.id})">
+                        <button onClick="borrar_evento(${body.producto.id})">
                             Eliminar
                         </button>
                     </td>
@@ -88,5 +87,3 @@ function borrar_evento (id){
         });
 
 }
-
-

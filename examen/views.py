@@ -5,6 +5,7 @@ from .models import boletos, eventos, productos, Localidad
 import json
 from django.http import JsonResponse
 from datetime import datetime
+import datetime as dt
 
 def principal(request):
     return render(request, 'examen/principal.html')
@@ -22,8 +23,8 @@ def listar_boletos_eventos(request, id):
     return render(request, 'examen/boletos.html', {"boletos": boleto})
 
 def listar_producto(request):
-    productos_data = productos.objects.all()
-    return render(request, 'examen/producto.html', {"productos": productos_data})
+    localidades = Localidad.objects.all()
+    return render(request, 'examen/producto.html', {'localidades': localidades})
 
 def obtener_boletos(request, evento_id):
     boletos = Boleto.objects.filter(evento_id=evento_id)
@@ -32,16 +33,64 @@ def obtener_boletos(request, evento_id):
 
     return JsonResponse(list(boletos.values()), safe=False)
 
-def agregar_producto(request):
+def validar_agregar_producto(request):
+     
     if request.method == 'POST':
-        form = ProductoForm(body)
-        if form.is_valid():
-            form.save()
-            return redirect('producto') 
-    else:
-        form = ProductoForm()
-    return render(request, 'agregar_producto.html', {'form': form})
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
 
+
+        nombre = body.get('name')
+        precio = body.get('precio')
+        localidad_id = body.get('localidad_id')
+        print (nombre)
+        today = dt.date.today()
+        numero_productos=productos.objects.filter(fecha_creacion__gt=today).count() 
+
+        if not nombre or not precio  or not localidad_id:
+            return JsonResponse({'success': False, 'message': 'Todos los campos son requeridos.'}, status=400)
+
+        if numero_productos >=10:
+            return JsonResponse({'success': False, 'message': 'solo puedes agregar 10 por dia.'}, status=400)
+        
+        if int(precio) <=0:
+            return JsonResponse({'success': False, 'message': 'El precio debe ser mayor a 0.'}, status=400)
+        
+        localidad = get_object_or_404(Localidad, id=localidad_id)
+
+        producto = productos(
+            name=nombre,
+            precio=precio,
+            localidad_id=localidad
+        )
+
+        producto.save()
+
+        return JsonResponse({
+            'success': True,
+            'producto': {
+                'id': producto.id,
+                'nombre': producto.name,
+                'precio': str(producto.precio),
+                'localidad': producto.localidad_id.name,
+            },
+            'message': "Se creo el producto"
+        },status=201)
+        
+    else:
+         return JsonResponse({'success': False, 'message': 'Método no permitido.'}, status=400)
+
+
+def validar_eliminar_producto(request):
+    body = json.loads(request.body.decode('utf-8'))
+    producto_id = body.get("id")
+
+    producto = productos.objects.filter(id=producto_id).first()
+    if not producto: 
+      return JsonResponse({"message": "no se elimino el producto", "status": "success"}, status=500)
+    producto.delete()
+
+    return JsonResponse({"message": "producto eliminado", "status": "success"}, status=200)
 
 def agregar_evento(request):
     localidades = Localidad.objects.all()
@@ -99,7 +148,7 @@ def validar_agregarEvento(request):
                 'nombre': evento.name,
                 'fecha_inicio': str(evento.fecha_inicio),
                 'fecha_fin': str(evento.fecha_fin),
-                'localidad': evento.localidad_id_id,
+                'localidad': evento.localidad_id.name,
             },
             'message': "Se creo el evento"
         },status=201)
@@ -112,7 +161,7 @@ def validar_eliminarEvento(request):
     body = json.loads(request.body.decode('utf-8'))
     evento_id = body.get("id")
 
-    evento = get_object_or_404(eventos, id=evento_id)
+    evento = eventos.objects.filter(id=evento_id).first()
     if not evento: 
       return JsonResponse({"message": "no se elimino el evento", "status": "success"}, status=500)
     evento.delete()
