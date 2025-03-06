@@ -1,0 +1,15 @@
+
+<div class="card">
+    <div>
+        <img src="{{ photo }}" alt="{{ name }}">
+    </div>
+    <div class="infoevento">
+        <h2>{{name}}</h2>
+        <p><strong>Localidad: </strong>{{localidad}}</p>
+        <div>
+            <p><strong>Descripción: </strong></p>
+            <p>{{descipcion}}</p>
+        </div>
+            <a href="{% url 'boletos_eventos' id%}">Boletos</a>
+    </div>
+</div>

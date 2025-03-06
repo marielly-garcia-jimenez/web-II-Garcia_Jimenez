@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Evento, Localidad, Boletos, producto
+from .models import eventos, Localidad, boletos, productos
 
-admin.site.register(Evento)
+admin.site.register(eventos)
 
 admin.site.register(Localidad)
-admin.site.register(Boletos)
-admin.site.register(producto)
+admin.site.register(boletos)
+admin.site.register(productos)

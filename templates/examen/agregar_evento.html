@@ -1,0 +1,147 @@
+{% extends 'base/base.html' %}
+
+{% block styles %}
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .form-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .form-left {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+        }
+        input, select {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Agregar evento</h1>
+        <div class="form-container">
+            <form id="form" class="form-left">
+                <input type="hidden" id="csrf_token" value="{{csrf_token}}" />
+
+                <label for="name">Nombre del evento:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="fecha_inicio">Fecha inicio:</label>
+                <input type="datetime-local" id="fecha_inicio" name="fecha_inicio" required>
+
+                <label for="fecha_fin">Fecha final:</label>
+                <input type="datetime-local" id="fecha_fin" name="fecha_fin" required>
+
+                <label for="localidad_id">Localidad:</label>
+                <select id="localidad_id" name="localidad_id" required>
+                  {% for localidad in localidades%}
+                    <option value="{{localidad.id}}">{{localidad.name}}</option>
+                  {%endfor%}
+                </select>
+
+                <button id="agregar">Agregar</button>
+
+            </form>
+            <div>
+                <h2>Reglas</h2>
+                <ul>
+                    <li>Ningún campo debe de quedar vacío</li>
+                    <li>La fecha Fin no puede ser menor que la fecha inicio</li>
+                    <li>La fecha de inicio debe ser mayor al día de hoy</li>
+                    <li>No puedes agregar dos eventos seguidos de la misma localidad</li>
+                    <li>Mostrar mensaje de guardado o de error en caso de fallar</li>
+                    <li>El envío de información debe ser por medio del método FETCH de JS</li>
+                    <li>El botón "Eliminar" deberá de hacerse por medio del método FETCH de JS</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Eventos recientemente agregados</h2>
+        <table id="evento-table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha inicio</th>
+                    <th>Fecha fin</th>
+                    <th>Localidad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tabla">
+                <tr>
+                    <th scope="row">evento Nombre</th>
+                    <td>fecha inicio</td>
+                    <td>fecha fin</td>
+                    <td>localidad</td>
+                    <td>
+                        <button onClick="borrar_evento(1)">
+                            Eliminar
+                        </button>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const CREATE_URL = "{% url 'validar_agregarevento' %}"
+    const DELETE_URL = "{% url 'validar_eliminarevento' %}"
+    
+</script>
+
+{% load static %}
+<script src="{% static 'js/agregar_evento.js' %}"></script>
+
+{% endblock %}

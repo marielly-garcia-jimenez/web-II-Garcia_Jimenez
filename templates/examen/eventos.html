@@ -29,6 +29,7 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             padding: 15px;
             text-align: left;
+            
         }
         .card img {
             width: 100%;
@@ -65,21 +66,14 @@
 </head>
 <body>
     <h1>Lista de Eventos</h1>
+
+    <a href="{% url 'agregar_evento' %}"><button>Agregar evento</button></a>
+
     <div class="container">
         {% for evento in eventos %}
-            <div class="card">
-                <img src="{{ evento.photo }}" alt="Imagen de {{ Evento.name }}">
-                <div class="info">
-                    <h3>{{ evento.name }}</h3>
-                    <p><strong>Fecha:</strong> {{ evento.fecha_inicio }}</p>
-                    <p><strong>Descripción:</strong> {{ evento.descripcion }}</p>
-                    <a href="#">Boletos</a>
-                </div>
-            </div>
+            {% include 'components/evento_card.html' with id=evento.id localidad=evento.localidad_id.name descripcion=evento.descripcion photo=evento.photo %}
         {% endfor %}
     </div>
+    
 </body>
 </html>
-
-
-    

@@ -17,8 +17,10 @@
         }
 
         .boleto img {
-            max-width: 100%;
+            max-width: 150px;
             height: auto;
+            display: block;
+            margin: 0 auto;
         }
 
         .comprar-btn {
@@ -35,18 +37,14 @@
 {% endblock %}
 
 {% block content %}
-
     <h1>Boletos</h1>
     <div class="boletos-container">
+
         {% for boleto in boletos %}
-            <div class="boleto">
-                {% load static %}
-                <img src="{% static 'img/boleto.jpg' %}" alt="Boleto"> 
-                <h2>{{ boleto.evento_id.name }}</h2>
-                <p>Localidad: {{ boleto.evento_id.localidad_id.name }}</p>
-                <p>Precio: ${{ boleto.precio }}</p>
-                <button class="comprar-btn">Comprar</button>
-            </div>
+          {% include 'components/boletos_card.html' with precio=boleto.precio tipo_boleto_id=boleto.tipo_boleto_id fecha=boleto.fecha photo=boleto.photo %}
+         {% empty %}
+         <h1> no hay boletos</h1>
+            
         {% endfor %}
     </div>
 {% endblock %}
