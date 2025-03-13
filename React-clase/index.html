@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+        <!-- Agregar el script de Babel -->
+        <script src="https://unpkg.com/@babel/standalone"></script>
+        <script type="text/babel" src="components/MyButton.js"></script>
+        <script type="text/babel" src="components/Alumno.js"></script>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+
+        <div id="root">
+
+        </div>
+    
+    </body>
+
+    <script type="text/babel">
+
+        function saludar(params){
+            alert('Hola Mundo');
+        }
+
+        function despedir(params){
+            alert('Adios Mundo');
+        }
+
+        function App(){
+            const {useState} = React;
+            const [contador, setContador] = useState(0);
+            const [contador2, setContador2] = useState(0);
+            const [visible, setVisible] = useState(true);
+            const [texto, setTexto] = useState('Hola ');
+            const [alumno, setAlumnos] = useState([
+                {nombre: 'cindy', notas: 10, asignatura: "quimica"},
+                {nombre: 'andres', notas: 9, asignatura: "frances"},
+                {nombre: 'vicente', notas: 8, asignatura: "ciencias"},
+                {nombre: 'marco', notas: 7, asignatura: "ingles"},
+                
+            ]);
+            const [alu, setAlu] = useState(["cindy", "andres", "vicente", "marco"]);
+
+            function verParrafo(){
+                setVisible(!visible);
+            }
+
+            return(
+                <div>
+                    <h1>Hola Mundo</h1>
+                    <p>Esto es react</p>
+                    <button onClick={saludar}>Click</button>
+                    <MyButton titulo="Saludar" contador={contador} setContador={setContador} />
+                    <h2>Contador: {contador}</h2>
+                    <MyButton titulo="Despedir" contador={contador2} setContador={setContador2} />
+                    <h2>Contador2: {contador2}</h2>
+
+                    <button onClick={verParrafo}>Ver Parrafo</button>
+
+                    <div className="container">
+                        
+                        {alumno.map((alumno, index) => (
+                            <Alumno alumno={alumno} />
+                        ))}
+                        
+                    </div>
+
+                </div>
+            )
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+
+</html>
